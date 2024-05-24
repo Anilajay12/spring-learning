@@ -1,6 +1,7 @@
 package com.anil.abcschool.school;
 
 import com.anil.abcschool.student.Student;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,7 +14,8 @@ public class School {
     private String name;
     private String address;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "school")
+    @JsonManagedReference
     private List<Student> students;
 
     public School() {

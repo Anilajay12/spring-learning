@@ -1,5 +1,6 @@
 package com.anil.abcschool.school;
 
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -51,7 +52,7 @@ public class SchoolController {
     }
 
     @PostMapping
-    public ResponseEntity<School> addNewSchool(@RequestBody School school){
+    public ResponseEntity<School> addNewSchool(@Valid @RequestBody School school){
         Log.info("Inside SchoolController.addNewSchool");
         Log.info("Trying to add new school record: {} -> {}", school, school.toString());
         var response = schoolService.addNewSchool(school);

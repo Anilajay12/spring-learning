@@ -1,6 +1,7 @@
 package com.anil.abcschool.student;
 
 import com.anil.abcschool.school.School;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
@@ -16,7 +17,11 @@ public class Student {
     private String email;
 
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(
+            name = "school_id"
+    )
+    @JsonBackReference
     private School school;
 
 
